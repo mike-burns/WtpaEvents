@@ -3,6 +3,7 @@
   package="at.wherestheparty.events"
   android:versionCode="1"
   android:versionName="1.0">
+
   <application android:label="@string/app_name">
     <activity android:name="WtpaActivity"
       android:label="@string/app_name">

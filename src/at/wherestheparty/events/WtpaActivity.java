@@ -8,6 +8,12 @@ import android.webkit.WebViewClient;
 import android.view.KeyEvent;
 import android.webkit.HttpAuthHandler;
 
+import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuInflater;
+import android.net.Uri;
+
 public class WtpaActivity extends Activity {
   private WebView page;
 
@@ -30,12 +36,35 @@ public class WtpaActivity extends Activity {
       return super.onKeyDown(keyCode, event);
   }
 
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.home, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.twitter:
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://twitter.com/theparty")));
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
+
   private class WtpaWebViewClient extends WebViewClient {
+    /* Uncomment this if you want to follow all links within the app.
+     * Can also only load links that begin with ejohn.org/wtpa/ in the app.
+     */
+    /*
     @Override
     public boolean shouldOverrideUrlLoading(WebView v, String url) {
       v.loadUrl(url);
       return true;
     }
+    */
 
     @Override
     public void onReceivedHttpAuthRequest(WebView v, HttpAuthHandler handler, String host, String realm) {
