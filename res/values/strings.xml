@@ -2,4 +2,5 @@
 <resources>
   <string name="app_name">Where\'s the Party At?</string>
   <string name="twitter">Twitter</string>
+  <string name="facebook">Facebook</string>
 </resources>

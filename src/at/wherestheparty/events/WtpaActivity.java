@@ -49,6 +49,9 @@ public class WtpaActivity extends Activity {
       case R.id.twitter:
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://twitter.com/theparty")));
         return true;
+      case R.id.facebook:
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.facebook.com/pages/Wheres-The-Party-At/128506820514886")));
+        return true;
       default:
         return super.onOptionsItemSelected(item);
     }
