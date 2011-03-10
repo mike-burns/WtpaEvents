@@ -7,6 +7,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.view.KeyEvent;
 import android.webkit.HttpAuthHandler;
+import android.webkit.WebSettings;
 
 import android.content.Intent;
 import android.view.Menu;
@@ -76,8 +77,11 @@ public class WtpaActivity extends Activity {
   }
 
   private WebView page() {
-    if (this.page == null)
+    if (this.page == null) {
       this.page = (WebView)findViewById(R.id.webpage);
+      WebSettings s = this.page.getSettings();
+      s.setJavaScriptEnabled(true);
+    }
     return this.page;
   }
 }
