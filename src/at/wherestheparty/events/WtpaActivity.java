@@ -15,6 +15,11 @@ import android.view.MenuItem;
 import android.view.MenuInflater;
 import android.net.Uri;
 
+import android.graphics.Bitmap;
+import android.view.Window;
+
+import android.util.Log;
+
 public class WtpaActivity extends Activity {
   private WebView page;
 
@@ -22,6 +27,7 @@ public class WtpaActivity extends Activity {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+    requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
     setContentView(R.layout.main);
 
     page().loadUrl("http://ejohn.org/wtpa/");
@@ -73,6 +79,16 @@ public class WtpaActivity extends Activity {
     @Override
     public void onReceivedHttpAuthRequest(WebView v, HttpAuthHandler handler, String host, String realm) {
       handler.proceed(UsernamePassword.username, UsernamePassword.password);
+    }
+
+    @Override
+    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+      setProgressBarIndeterminateVisibility(true);
+    }
+
+    @Override
+    public void onPageFinished(WebView view, String url) {
+      setProgressBarIndeterminateVisibility(false);
     }
   }
 
